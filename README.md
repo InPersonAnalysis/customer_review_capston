@@ -1,8 +1,8 @@
 # Customer Review Analysis
 
-This repository contains all files, and ipython notebooks, used in the NLP Project. A full outline of all the files with descriptions can be found below.
+This repository contains all files, and ipython notebooks, used in this project. A full outline of all the files with descriptions can be found below.
 
-To view the slide deck, ["click here."](https://docs.google.com/presentation/d/1I_QQLWC0TRMOb0x_x64Gjn7MMuG_94kd-X5K00pr4kY/edit?usp=sharing) 
+To view the slide deck, ["click here."]() 
 
 
 ___
