@@ -3,9 +3,7 @@ import numpy as np
 from datetime import datetime, timedelta
 import re
 
-
-# Kaggle API Command to download
-
+## Kaggle API Command to download
 # kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
 
 def wrangle_hotel(df):
