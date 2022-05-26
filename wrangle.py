@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import re
+from nltk.sentiment import SentimentIntensityAnalyzer
 
 #function for parsing the tags column in the dataframe
 def parse_tags(tags):
@@ -107,7 +108,7 @@ def wrangle_hotel(df):
     
     return df
 
-# NLP PREPERATION
+# NLP PREPARATION
 import nltk
 import unicodedata
 import re
@@ -196,10 +197,10 @@ def remove_stopwords(string, extra_words = [], exclude_words = []):
     string_without_stopwords = ' '.join(filtered_words)
     
     return string_without_stopwords
-# One and done fuction for NLP
+# One and done function for NLP
 def nlp_clean(df):
     '''
-    This function takes in a Customer Review Data and returns NLP prep.
+    This function takes in a df of Customer Review Data and returns NLP prep.
     '''
     # Apply basic clean and tokenize to each review.
     df['positive_clean_review'] = df['positive_review'].apply(basic_clean)
@@ -217,4 +218,17 @@ def nlp_clean(df):
     df['positive_lemma'] = [lemmatize(review) for review in df.positive_clean_review]
     df['negative_lemma'] = [lemmatize(review) for review in df.negative_clean_review]
     return df
-#### END NLP PREPERATION
+#### END NLP PREPARATION
+
+def get_sentiment_scores(df):
+    '''
+    Takes in a cleaned df of Customer Review Data,
+    returns the df with columns containing sentiment scores from the review variables.'''
+    df = nlp_clean(df)
+    sia = SentimentIntensityAnalyzer()
+    df['pos_sentiment_score'] = df.positive_clean_review.apply(lambda msg: sia.polarity_scores(msg)['compound'])
+    df['neg_sentiment_score'] = df.negative_clean_review.apply(lambda msg: sia.polarity_scores(msg)['compound'])
+    df['pos_lem_sentiment_score'] = df.positive_lemma.apply(lambda msg: sia.polarity_scores(msg)['compound'])
+    df['neg_lem_sentiment_score'] = df.negative_lemma.apply(lambda msg: sia.polarity_scores(msg)['compound'])
+    return df
+
