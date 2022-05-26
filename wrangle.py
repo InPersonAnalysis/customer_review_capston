@@ -34,7 +34,43 @@ def wrangle_hotel(df):
     df.days_since_review = df.days_since_review.astype('int')
     
     # Get Hotel Location
-    df['location'] = [' '.join(col.split()[-2:]) for col in df.hotel_address]
+    # Create blank lists
+    street = []
+    city = []
+    zip_code = []
+    country = []
+    
+    # loop through addresses
+    for address in df.hotel_address:
+        # If France, Netherlands or Italy then split address as follows
+        if address.split()[-1] in ['France','Netherlands','Italy']:
+
+            street.append(' '.join(address.split()[:-4]))
+            zip_code.append(' '.join(address.split()[-4:-2]))
+            city.append(' '.join(address.split()[-2:-1]))
+            country.append(' '.join(address.split()[-1:]))
+        # If Spain, Austria then split address as follows
+        elif address.split()[-1] in ['Spain','Austria']:
+
+            street.append(' '.join(address.split()[:-3]))
+            zip_code.append(' '.join(address.split()[-3:-2]))
+            city.append(' '.join(address.split()[-2:-1]))
+            country.append(' '.join(address.split()[-1:]))
+        # United Kindoms is split last
+        else:
+            street.append(' '.join(address.split()[:-5]))
+            city.append(' '.join(address.split()[-5:-4]))
+            zip_code.append(' '.join(address.split()[-4:-2]))
+            country.append(' '.join(address.split()[-2:]))
+    
+    # Assign columns
+    df['street'] = street
+    df['city'] = city
+    df['zip_code'] = zip_code
+    df['country'] = country
+    
+    # Drop Address
+    df.drop('hotel_address',inplace=True)
     
     # Break out tags into groups
     df.tags = [[tag.strip().lower() for tag in (tags.replace('"','').replace("'","")
