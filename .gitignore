@@ -1,7 +1,7 @@
 env.py
-.ipynp_checkpoint/
+imports.py
+.ipynb_checkpoint/
 .DS_Store
-__pychache__/
-*.csv
+__pycache__/
 *.xlsx
 *.zip
