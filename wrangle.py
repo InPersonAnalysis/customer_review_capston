@@ -117,6 +117,16 @@ def wrangle_hotel(df, use_cache=True):
     # NLP Clean
     df = nlp_clean(df)
     
+    # Rearrange columns
+    columns = ['month','year','day_name','day','quarter', 'hotel_name','street','city','zip_code','country','lat',
+               'lng','additional_number_of_scoring','average_score','total_number_of_reviews','reviewer_nationality',
+               'trip_type','nights_stayed','group_type','total_number_of_reviews_reviewer_has_given','reviewer_score',
+               'days_since_review','neg_sentiment_score','neg_lem_sentiment_score','review_total_negative_word_counts',
+               'negative_unique_word_count','pos_sentiment_score','review_total_positive_word_counts','positive_unique_word_count',
+               'pos_lem_sentiment_score', 'negative_review','negative_clean_review','negative_stem','negative_lemma','positive_review',
+               'positive_clean_review','positive_stem','positive_lemma']
+    df = df[columns]
+    
     # Create csv
     df.to_csv(filename, index=False)
     
@@ -211,6 +221,7 @@ def remove_stopwords(string, extra_words = [], exclude_words = []):
     string_without_stopwords = ' '.join(filtered_words)
     
     return string_without_stopwords
+
 # One and done function for NLP
 def nlp_clean(df):
     '''
