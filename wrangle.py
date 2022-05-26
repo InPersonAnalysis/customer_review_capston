@@ -6,17 +6,25 @@ import re
 ## Kaggle API Command to download
 # kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
 
+#function for parsing the tags column in the dataframe
 def parse_tags(tags):
+    #change all tag values to lower case
     tags = tags.lower()
+    #initialize the trip type variable as 'unknown'
     trip_type = 'unknown'
+    #parse trip type and pull out trip type values from column
     if 'leisure trip' in tags:
         trip_type = 'leisure'
     elif 'buisness trip' in tags:
         trip_type = 'business'
+    #initialize the nights stayed variable as 'nan'
     nights_stayed = np.nan
+    #parse the nights stayed values by pulling out the digit with regex
     if re.search(r'stayed\s*(\d+)\s*nights?', tags):
         nights_stayed = re.sub(r'.*stayed\s*(\d+)\s*nights?.*', r'\1', tags)
+    #initialize the group type variable as 'unknown'
     group_type = 'unknown'
+    #parse the group type and pull group type values
     if 'group' in tags:
         group_type = 'group'
     elif 'solo traveler' in tags:
@@ -29,6 +37,7 @@ def parse_tags(tags):
         group_type = 'couple'
     elif 'travelers with friends' in tags:
         group_type = 'travelers with friends'
+    #return a dictionary with parsed values
     return dict(trip_type = trip_type, nights_stayed = nights_stayed, group_type = group_type)
 
 
@@ -40,7 +49,9 @@ def wrangle_hotel(df):
     # lower case column names
     df.columns = [col.lower() for col in df]
     
+    #use the parse_tags function to parse the string values in the tags columns and create new feature columns
     tags = pd.DataFrame(df.tags.apply(parse_tags).tolist())
+    #Concatenate the new features to the original dataframe
     df = pd.concat([df, tags], axis=1)
 
 
