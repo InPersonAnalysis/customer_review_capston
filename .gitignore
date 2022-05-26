@@ -1,7 +1,7 @@
 env.py
 imports.py
 prep.py
-Hotel_Reviews.csv
+*.csv
 .ipynb_checkpoint/
 .DS_Store
 __pycache__/
