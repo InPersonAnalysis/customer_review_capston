@@ -217,18 +217,16 @@ def nlp_clean(df):
     # Apply lemmatize to each review.
     df['positive_lemma'] = [lemmatize(review) for review in df.positive_clean_review]
     df['negative_lemma'] = [lemmatize(review) for review in df.negative_clean_review]
-    return df
-#### END NLP PREPARATION
 
-def get_sentiment_scores(df):
-    '''
-    Takes in a cleaned df of Customer Review Data,
-    returns the df with columns containing sentiment scores from the review variables.'''
-    df = nlp_clean(df)
     sia = SentimentIntensityAnalyzer()
     df['pos_sentiment_score'] = df.positive_clean_review.apply(lambda msg: sia.polarity_scores(msg)['compound'])
     df['neg_sentiment_score'] = df.negative_clean_review.apply(lambda msg: sia.polarity_scores(msg)['compound'])
     df['pos_lem_sentiment_score'] = df.positive_lemma.apply(lambda msg: sia.polarity_scores(msg)['compound'])
     df['neg_lem_sentiment_score'] = df.negative_lemma.apply(lambda msg: sia.polarity_scores(msg)['compound'])
+    
     return df
+#### END NLP PREPARATION
+
+
+    
 
