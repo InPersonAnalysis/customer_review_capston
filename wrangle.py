@@ -6,14 +6,55 @@ import re
 ## Kaggle API Command to download
 # kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
 
+#function for parsing the tags column in the dataframe
+def parse_tags(tags):
+    #change all tag values to lower case
+    tags = tags.lower()
+    #initialize the trip type variable as 'unknown'
+    trip_type = 'unknown'
+    #parse trip type and pull out trip type values from column
+    if 'leisure trip' in tags:
+        trip_type = 'leisure'
+    elif 'buisness trip' in tags:
+        trip_type = 'business'
+    #initialize the nights stayed variable as 'nan'
+    nights_stayed = np.nan
+    #parse the nights stayed values by pulling out the digit with regex
+    if re.search(r'stayed\s*(\d+)\s*nights?', tags):
+        nights_stayed = re.sub(r'.*stayed\s*(\d+)\s*nights?.*', r'\1', tags)
+    #initialize the group type variable as 'unknown'
+    group_type = 'unknown'
+    #parse the group type and pull group type values
+    if 'group' in tags:
+        group_type = 'group'
+    elif 'solo traveler' in tags:
+        group_type = 'solo traveler'
+    elif 'family with young children' in tags:
+        group_type = 'family with young children'
+    elif 'family with older children' in tags:
+        group_type = 'family with older children'
+    elif 'couple' in tags:
+        group_type = 'couple'
+    elif 'travelers with friends' in tags:
+        group_type = 'travelers with friends'
+    #return a dictionary with parsed values
+    return dict(trip_type = trip_type, nights_stayed = nights_stayed, group_type = group_type)
+
+
 def wrangle_hotel(df):
     '''
     Wrangle Start
     '''
-    
+
     # lower case column names
     df.columns = [col.lower() for col in df]
     
+    #use the parse_tags function to parse the string values in the tags columns and create new feature columns
+    tags = pd.DataFrame(df.tags.apply(parse_tags).tolist())
+    #Concatenate the new features to the original dataframe
+    df = pd.concat([df, tags], axis=1)
+
+
     # Set the review date as a datetime object then set it as the index
     df.review_date = pd.to_datetime(df.review_date)
     df = df.set_index('review_date').sort_index()
@@ -34,12 +75,43 @@ def wrangle_hotel(df):
     df.days_since_review = df.days_since_review.astype('int')
     
     # Get Hotel Location
-    df['location'] = [' '.join(col.split()[-2:]) for col in df.hotel_address]
+    # Create blank lists
+    street = []
+    city = []
+    zip_code = []
+    country = []
     
-    # Break out tags into groups
-    df.tags = [[tag.strip().lower() for tag in (tags.replace('"','').replace("'","")
-                                     .replace('[','') .replace(']','')
-                                     .split(','))] for tags in df.tags]
+    # loop through addresses
+    for address in df.hotel_address:
+        # If France, Netherlands or Italy then split address as follows
+        if address.split()[-1] in ['France','Netherlands','Italy']:
+
+            street.append(' '.join(address.split()[:-4]))
+            zip_code.append(' '.join(address.split()[-4:-2]))
+            city.append(' '.join(address.split()[-2:-1]))
+            country.append(' '.join(address.split()[-1:]))
+        # If Spain, Austria then split address as follows
+        elif address.split()[-1] in ['Spain','Austria']:
+
+            street.append(' '.join(address.split()[:-3]))
+            zip_code.append(' '.join(address.split()[-3:-2]))
+            city.append(' '.join(address.split()[-2:-1]))
+            country.append(' '.join(address.split()[-1:]))
+        # United Kindoms is split last
+        else:
+            street.append(' '.join(address.split()[:-5]))
+            city.append(' '.join(address.split()[-5:-4]))
+            zip_code.append(' '.join(address.split()[-4:-2]))
+            country.append(' '.join(address.split()[-2:]))
+    
+    # Assign columns
+    df['street'] = street
+    df['city'] = city
+    df['zip_code'] = zip_code
+    df['country'] = country
+    
+    # Drop Address
+    df.drop('hotel_address',inplace=True)
     
     return df
 
