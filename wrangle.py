@@ -3,9 +3,6 @@ import numpy as np
 from datetime import datetime, timedelta
 import re
 
-## Kaggle API Command to download
-# kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
-
 def parse_tags(tags):
     tags = tags.lower()
     trip_type = 'unknown'
@@ -43,7 +40,6 @@ def wrangle_hotel(df):
     tags = pd.DataFrame(df.tags.apply(parse_tags).tolist())
     df = pd.concat([df, tags], axis=1)
 
-
     # Set the review date as a datetime object then set it as the index
     df.review_date = pd.to_datetime(df.review_date)
     df = df.set_index('review_date').sort_index()
@@ -68,20 +64,17 @@ def wrangle_hotel(df):
     street = []
     city = []
     zip_code = []
-    country = []
-    
+    country = []    
     # loop through addresses
     for address in df.hotel_address:
         # If France, Netherlands or Italy then split address as follows
         if address.split()[-1] in ['France','Netherlands','Italy']:
-
             street.append(' '.join(address.split()[:-4]))
             zip_code.append(' '.join(address.split()[-4:-2]))
             city.append(' '.join(address.split()[-2:-1]))
             country.append(' '.join(address.split()[-1:]))
         # If Spain, Austria then split address as follows
         elif address.split()[-1] in ['Spain','Austria']:
-
             street.append(' '.join(address.split()[:-3]))
             zip_code.append(' '.join(address.split()[-3:-2]))
             city.append(' '.join(address.split()[-2:-1]))
@@ -92,7 +85,6 @@ def wrangle_hotel(df):
             city.append(' '.join(address.split()[-5:-4]))
             zip_code.append(' '.join(address.split()[-4:-2]))
             country.append(' '.join(address.split()[-2:]))
-    
     # Assign columns
     df['street'] = street
     df['city'] = city
@@ -100,6 +92,6 @@ def wrangle_hotel(df):
     df['country'] = country
     
     # Drop Address
-    df.drop('hotel_address',inplace=True)
+    df = df.drop(columns=['hotel_address','tags'])
     
     return df

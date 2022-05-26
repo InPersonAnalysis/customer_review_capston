@@ -170,12 +170,20 @@ ___
 <details><summary><i>Click to expand</i></summary>
 
 1. Clone this repository into your local machine using the following command:
+    
 ```bash
 git clone git@github.com:InPersonAnalysis/customer_review_capstone.git
 ```
-2. You will need Natural Language Tool Kit (NLKT), Pandas, Numpy, Matplotlib, Seaborn, and SKLearn installed on your machine.
+2. Run the Kaggle API Command to download  
+    
+```bash
+kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
+```
+    
+3. You will need Natural Language Tool Kit (NLKT), Pandas, Numpy, Matplotlib, Seaborn, and SKLearn installed on your machine.
 
-3. Now you can start a Jupyter Notebook session and execute the code blocks in the `final_report.ipynb` notebook.
+4. Now you can start a Jupyter Notebook session and execute the code blocks in the `final_report.ipynb` notebook.
+
 
 </details>
 
