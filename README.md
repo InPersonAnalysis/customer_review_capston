@@ -93,6 +93,13 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
+Instructions to acquire data.
+1. pip install kaggle
+2. Log-in to Kaggle (or sign up)
+3. Navigate to your Account page (click top-right profile picture)
+4. API section on the Kaggle Account page.
+5. Scroll down to the API section and click Create New API Token
+6. Save kaggle.json to the file path displayed in the OSError message given when attempting to import kaggle
 **Acquisition Files:**
 
 
