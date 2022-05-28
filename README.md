@@ -185,7 +185,9 @@ git clone git@github.com:InPersonAnalysis/customer_review_capstone.git
     
 ```bash
 kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
-```
+
+((See acquisition instructions if this command doesn't work))
+``` 
 3. Unzip the archive.zip file that is created to get the csv file
     
 4. You will need Natural Language Tool Kit (NLKT), Pandas, Numpy, Matplotlib, Seaborn, and SKLearn installed on your machine.
