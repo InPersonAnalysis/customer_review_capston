@@ -6,7 +6,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 import os
 import kaggle
 
-def acuire_hotel_data():
+def acquire_hotel_data():
     '''
     This function utilizes Kaggle API to acquire hotel data.
     Before running this function, you must have a Kaggle API key. Instructions to obtain key is in readme.md
@@ -62,8 +62,8 @@ def wrangle_hotel(use_cache=True):
         print('Using cached csv file...')
         return pd.read_csv(filename)
         
-    # acuire data
-    acuire_hotel_data()
+    # acquire data
+    acquire_hotel_data()
     df = pd.read_csv('Hotel_Reviews.csv')
 
     # lower case column names
