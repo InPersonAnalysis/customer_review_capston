@@ -24,7 +24,7 @@ def parse_tags(tags):
     #parse trip type and pull out trip type values from column
     if 'leisure trip' in tags:
         trip_type = 'leisure'
-    elif 'buisness trip' in tags:
+    elif 'business trip' in tags:
         trip_type = 'business'
     #initialize the nights stayed variable as 'nan'
     nights_stayed = np.nan
