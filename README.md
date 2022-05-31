@@ -93,6 +93,13 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
+Instructions to acquire data.
+1. pip install kaggle
+2. Log-in to Kaggle (or sign up)
+3. Navigate to your Account page (click top-right profile picture)
+4. API section on the Kaggle Account page.
+5. Scroll down to the API section and click Create New API Token
+6. Save kaggle.json to (/Users/<username>/.kaggle/) or in the OSError message given when attempting to import kaggle.
 **Acquisition Files:**
 
 
@@ -179,6 +186,8 @@ git clone git@github.com:InPersonAnalysis/customer_review_capstone.git
 ```bash
 kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
 ```
+((See acquisition instructions if this command doesn't work))
+
 3. Unzip the archive.zip file that is created to get the csv file
     
 4. You will need Natural Language Tool Kit (NLKT), Pandas, Numpy, Matplotlib, Seaborn, and SKLearn installed on your machine.
