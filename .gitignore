@@ -7,3 +7,5 @@ prep.py
 __pycache__/
 *.xlsx
 *.zip
+functions.py
+kaggle.json
