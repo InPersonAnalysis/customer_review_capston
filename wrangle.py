@@ -50,7 +50,7 @@ def parse_tags(tags):
     #return a dictionary with parsed values
     return dict(trip_type = trip_type, nights_stayed = nights_stayed, group_type = group_type)
 
-def wrangle_hotel(df, use_cache=True):
+def wrangle_hotel(use_cache=True):
     '''
     Transform the dataframe so that time, address and tags are all useable. Add NLP data to dataframe.
     '''
@@ -63,6 +63,7 @@ def wrangle_hotel(df, use_cache=True):
         print('Using cached csv file...')
         return pd.read_csv(filename)
 
+    df = acquire_hotel_data()
     # lower case column names
     df.columns = [col.lower() for col in df]
     
@@ -241,13 +242,14 @@ def nlp_clean(df):
     '''
     This function takes in a df of Customer Review Data and returns NLP prep.
     '''
-    # Remove 'No Negative' and 'No Positive' from the reviews
-    df['positive_review'] = [review.replace('No Positive', '') for review in df.positive_review]
-    df['negative_review'] = [review.replace('No Negative', '') for review in df.negative_review]
-    
     # Apply basic clean, tokenize and remove stopwords to each review.
     df['positive_clean_review'] = df['positive_review'].apply(basic_clean)
     df['negative_clean_review'] = df['negative_review'].apply(basic_clean)
+
+    # Remove 'No Negative' and 'No Positive' from the reviews
+    words = ['nothing', 'n', 'none', 'nothing really', 'good', 'nothing dislike', 'liked everything', 'everything perfect', 'nil', 'nothing complain', 'nothing say']
+    df['positive_clean_review'] = [review.replace('no positive', '') for review in df.positive_clean_review]
+    df['negative_clean_review'] = [review.replace(words, '') for review in df.negative_clean_review]
 
     df['positive_clean_review'] = df['positive_clean_review'].apply(tokenize)
     df['negative_clean_review'] = df['negative_clean_review'].apply(tokenize)
