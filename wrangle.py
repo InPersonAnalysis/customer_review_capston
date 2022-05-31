@@ -125,6 +125,7 @@ def wrangle_hotel(use_cache=True):
     df['city'] = city
     df['zip_code'] = zip_code
     df['country'] = country
+    df['nps_group'] = df.reviewer_score.apply(nps_group)
     
     # Drop Address
     df = df.drop(columns=['hotel_address','tags'])
@@ -273,6 +274,16 @@ def nlp_clean(df):
     return df
 #### END NLP PREPARATION
 
-
+## NPS Score Feature Engineering
+def nps_group(reviewer_score):
+    if reviewer_score > 8.9:
+        nps_group = 'promoter'
+    elif reviewer_score > 6.9:
+        nps_group = 'passive'
+    elif reviewer_score >= 0:
+        nps_group = 'detractor'
+    else:
+        nps_group = 'no group'
+    return nps_group
     
 
