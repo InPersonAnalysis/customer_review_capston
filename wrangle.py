@@ -24,7 +24,7 @@ def parse_tags(tags):
     #parse trip type and pull out trip type values from column
     if 'leisure trip' in tags:
         trip_type = 'leisure'
-    elif 'buisness trip' in tags:
+    elif 'business trip' in tags:
         trip_type = 'business'
     #initialize the nights stayed variable as 'nan'
     nights_stayed = np.nan
@@ -79,7 +79,8 @@ def wrangle_hotel(use_cache=True):
     df = df.set_index('review_date').sort_index()
     
     # Create columns for date types to groupby
-    df['month'] = df.index.month_name()
+    df['month'] = df.index.month
+    df['month_name'] = df.index.month_name()
     df['year'] = df.index.year
     df['day_name'] = df.index.day_name()
     df['day'] = df.index.day
@@ -132,13 +133,14 @@ def wrangle_hotel(use_cache=True):
     df = nlp_clean(df)
     
     # Rearrange columns
-    columns = ['month','year','day_name','day','quarter', 'hotel_name','street','city','zip_code','country','lat',
+    columns = ['month_name','month','year','day_name','day','quarter', 'hotel_name','street','city','zip_code','country','lat',
                'lng','additional_number_of_scoring','average_score','total_number_of_reviews','reviewer_nationality',
                'trip_type','nights_stayed','group_type','total_number_of_reviews_reviewer_has_given','reviewer_score',
                'days_since_review','neg_sentiment_score','neg_lem_sentiment_score','review_total_negative_word_counts',
                'negative_unique_word_count','pos_sentiment_score','review_total_positive_word_counts','positive_unique_word_count',
                'pos_lem_sentiment_score', 'negative_review','negative_clean_review','negative_stem','negative_lemma','positive_review',
                'positive_clean_review','positive_stem','positive_lemma']
+    
     df = df[columns]
     
     # Create csv
