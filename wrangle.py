@@ -161,6 +161,7 @@ def basic_clean(string):
              .encode('ascii', 'ignore')\
              .decode('utf-8', 'ignore')
     string = re.sub(r'[^\w\s]', '', string).lower()
+    string = re.sub(r'[\s]', ' ', string).strip()
 
     return string
 
