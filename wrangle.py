@@ -276,12 +276,19 @@ def nlp_clean(df):
 
 ## NPS Score Feature Engineering
 def nps_group(reviewer_score):
+    '''
+    This function takes in the reviewer's score and assigns the review a categorical label ('promoter', 'passive', 'detractor')
+    '''
+    #score of 9 or more = 'promoter'
     if reviewer_score > 8.9:
         nps_group = 'promoter'
+    #score between 7 and 9 = 'passive'
     elif reviewer_score > 6.9:
         nps_group = 'passive'
+    #score less than 7 = detractor
     elif reviewer_score >= 0:
         nps_group = 'detractor'
+    #if no score return no group
     else:
         nps_group = 'no group'
     return nps_group
