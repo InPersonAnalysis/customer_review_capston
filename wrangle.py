@@ -13,7 +13,8 @@ def acquire_hotel_data():
     '''
     kaggle.api.authenticate()
     kaggle.api.dataset_download_files('jiashenliu/515k-hotel-reviews-data-in-europe', path='./' , unzip=True)
-    return 
+    df = pd.read_csv('Hotel_Reviews.csv')
+    return df
 
 #function for parsing the tags column in the dataframe
 def parse_tags(tags):
@@ -49,7 +50,7 @@ def parse_tags(tags):
     #return a dictionary with parsed values
     return dict(trip_type = trip_type, nights_stayed = nights_stayed, group_type = group_type)
 
-def wrangle_hotel(use_cache=True):
+def wrangle_hotel(df, use_cache=True):
     '''
     Transform the dataframe so that time, address and tags are all useable. Add NLP data to dataframe.
     '''
@@ -61,10 +62,6 @@ def wrangle_hotel(use_cache=True):
     if os.path.exists(filename) and use_cache:
         print('Using cached csv file...')
         return pd.read_csv(filename)
-        
-    # acquire data
-    acquire_hotel_data()
-    df = pd.read_csv('Hotel_Reviews.csv')
 
     # lower case column names
     df.columns = [col.lower() for col in df]
