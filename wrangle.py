@@ -248,7 +248,7 @@ def nlp_clean(df):
     df['negative_clean_review'] = df['negative_review'].apply(basic_clean)
 
     # Remove 'No Negative' and 'No Positive' from the reviews
-    words = 'nothing|n|none|nothing really|good|nothing dislike|liked everything|everything perfect|nil|nothing complain|nothing say'
+    words = 'nothing|none|nothing really|good|nothing dislike|liked everything|everything perfect|nil|nothing complain|nothing say'
     import re 
     df['positive_clean_review'] = [review.replace('no positive', '') for review in df.positive_clean_review]
     df['negative_clean_review'] = [re.sub(words, '', review) for review in df.negative_clean_review]
