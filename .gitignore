@@ -8,5 +8,6 @@ __pycache__/
 *.xlsx
 *.zip
 *.jpeg
+*.png
 functions.py
 kaggle.json
