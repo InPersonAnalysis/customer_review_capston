@@ -7,5 +7,7 @@ prep.py
 __pycache__/
 *.xlsx
 *.zip
+*.jpeg
+*.png
 functions.py
 kaggle.json
