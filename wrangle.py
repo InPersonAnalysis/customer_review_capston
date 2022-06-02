@@ -137,8 +137,8 @@ def wrangle_hotel(use_cache=True):
                'trip_type','nights_stayed','group_type','total_number_of_reviews_reviewer_has_given','reviewer_score', 'nps_group',
                'days_since_review','neg_sentiment_score','neg_lem_sentiment_score','review_total_negative_word_counts',
                'negative_unique_word_count','pos_sentiment_score','review_total_positive_word_counts','positive_unique_word_count',
-               'pos_lem_sentiment_score', 'negative_review','negative_clean_review','negative_stem','negative_lemma','positive_review',
-               'positive_clean_review','positive_stem','positive_lemma']
+               'pos_lem_sentiment_score', 'negative_review','negative_clean_review','negative_lemma','positive_review',
+               'positive_clean_review','positive_lemma']
     
     df = df[columns]
     
@@ -248,19 +248,26 @@ def nlp_clean(df):
     df['negative_clean_review'] = df['negative_review'].apply(basic_clean)
 
     # Remove 'No Negative' and 'No Positive' from the reviews
-    words = 'nothing|none|nothing really|good|nothing dislike|liked everything|everything perfect|nil|nothing complain|nothing say'
+
+    words = ['nothing', 'n', 'none', 'nothing really', 'good', 'nothing dislike', 'liked everything', 'everything perfect', 'nil', 'nothing complain', 'nothing say', 'no negative']
     import re 
     df['positive_clean_review'] = [review.replace('no positive', '') for review in df.positive_clean_review]
-    df['negative_clean_review'] = [re.sub(words, '', review) for review in df.negative_clean_review]
+    df.loc[df.negative_clean_review.isin(words), 'negative_clean_review'] = ''
+    #df['negative_clean_review'] = [re.sub(words, '', review) for review in df.negative_clean_review]
+
+    df.positive_clean_review.fillna('', inplace=True)
+    df.negative_clean_review.fillna('', inplace=True)
+
+    df['positive_clean_review'] = df['positive_clean_review'].apply(remove_stopwords)
+    df['negative_clean_review'] = df['negative_clean_review'].apply(remove_stopwords)
 
     df['positive_clean_review'] = df['positive_clean_review'].apply(tokenize)
     df['negative_clean_review'] = df['negative_clean_review'].apply(tokenize)
 
-    df['positive_clean_review'] = df['positive_clean_review'].apply(remove_stopwords)
-    df['negative_clean_review'] = df['negative_clean_review'].apply(remove_stopwords)
     # Apply stem to each review.
-    df['positive_stem'] = [stem(review) for review in df.positive_clean_review]
-    df['negative_stem'] = [stem(review) for review in df.negative_clean_review]
+    #df['positive_stem'] = [stem(review) for review in df.positive_clean_review]
+    #df['negative_stem'] = [stem(review) for review in df.negative_clean_review]
+    
     # Apply lemmatize to each review.
     df['positive_lemma'] = [lemmatize(review) for review in df.positive_clean_review]
     df['negative_lemma'] = [lemmatize(review) for review in df.negative_clean_review]
