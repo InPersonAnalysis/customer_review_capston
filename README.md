@@ -6,7 +6,9 @@ To view the Slide Deck, ["click here."](https://docs.google.com/presentation/d/1
 
 To view the Handout, ["click here."](https://www.canva.com/design/DAFCXzznwGM/qiVjEIAp4Bx0uVw9UfR_Tg/edit?utm_content=DAFCXzznwGM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) 
 
-To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb) 
+To view the white paper, ["click here.](https://docs.google.com/document/d/1ph_axcpSNiGZAFXA7lmivC9EDDmzmvPa6Xr4bUssz6I/edit?usp=sharing)
+
+To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb)
 
 ___
 ## Table of Contents
@@ -44,9 +46,12 @@ The goal of this project it to provide actionable recommendations to our partner
 
 ### Project Description
 
-    
+As the data science team at Booking.com we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewer’s score. With the reviewers’ scores, we calculated a Net Promoter Score-styled metric for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
 
 ### Initial Questions
+- What words/topics are associated with positive or negative reviews?
+- What are drivers of review score/average score?
+- Which customer groups give the highest/lowest review scores?
 
  
 
@@ -58,7 +63,7 @@ ___
 <details><summary><i>Click to expand</i></summary>
 
 | Variable              | Meaning      |
-| :-: | :-- |
+|:-:| :-- |
 |Hotel_Address| Address of hotel.|
 |Review_Date| Date when reviewer posted the corresponding review.|
 |Average_Score| Average Score of the hotel, calculated based on the latest comment in the last year.|
@@ -119,7 +124,7 @@ This project required extensive data cleaning and wrangling including:
 - parsing the list of strings in the tags column into seperate feature columns
 - changing the data type of the timestamp column and engineering additional features containing portions of the overall time stamp
 - verifying and updating review word counts
-- parsing the address values and creating seperate features for country, city, etc.
+- parsing the address values and creating separate features for country, city, etc.
 - dropping unneeded columns
 - preparing the text data from NLP including basic clean, removing stopwords, and lemmatizing
 - changing the order of the columns within the dataframe
@@ -131,7 +136,7 @@ This project required extensive data cleaning and wrangling including:
 
 <details><summary><i>Click to expand</i></summary>
 
-
+Exploration shifted from a regional focus at the outset of the project to an NLP focus, drawing on feature engineering to discover further insight into the data.
     
 </details>
 
@@ -139,6 +144,7 @@ This project required extensive data cleaning and wrangling including:
 
 <details><summary><i>Click to expand</i></summary>
 
+A Latent Dirichlet Allocation (LDA) model fed by our NLP efforts, was employed to determine the top words associated with a particular hotel. Predictive modeling is not a focus of this project.
     
 
 </details>
@@ -148,7 +154,10 @@ ___
 
 <details><summary><i>Click to expand</i></summary>
 
-    
+- Sentiment Intensity Analysis found that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
+
+- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. We found that the majority of positive reviews focus on (Topic 0) while the most negative topic mentioned in the reviews is (Topic -A). 
+
 
 **Next Steps:**
 
