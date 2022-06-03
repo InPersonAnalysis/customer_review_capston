@@ -65,9 +65,9 @@ ___
 |Average_Score| Average Score of the hotel, calculated based on the latest comment in the last year.|
 |Hotel_Name| Name of Hotel|
 |Reviewer_Nationality| Nationality of Reviewer|
-|Negative_Review| Negative Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be| 'No Negative'|
+|Negative_Review| Negative Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be 'No Negative'|
 |ReviewTotalNegativeWordCounts| Total number of words in the negative review.|
-|Positive_Review| Positive Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be| 'No Positive'|
+|Positive_Review| Positive Review the reviewer gave to the hotel. If the reviewer does not give the negative review, then it should be 'No Positive'|
 |ReviewTotalPositiveWordCounts| Total number of words in the positive review.|
 |Reviewer_Score| Score the reviewer has given to the hotel, based on his/her experience|
 |TotalNumberofReviewsReviewerHasGiven| Number of Reviews the reviewers has given in the past.|
@@ -77,6 +77,21 @@ ___
 |Additional_Numberof_Scoring| This number indicates how many valid scores without review in there.|
 |lat| Latitude of the hotel|
 |lng| longtitude of the hotel|
+|trip_type| Type of trip ('leisure', 'business', 'unknown')|
+|nights_stayed| Number of nights stayed|                           
+|group_type| Type of group ('couple', 'solo traveler', 'group', 'family with young children', 'family with older children', 'travelers with friends')|                                  
+|nps_group| NPS-style grouping of customer based on review score(below 6: 'detractor', 6-9: 'passive', above 9: 'promoter')|
+|neg_sentiment_score| Sentiment Intensity score of negative review|                          
+|neg_lem_sentiment_score| Sentiment Intensity score of lemmatized negative review|                    
+|review_total_negative_word_counts| Word count of negative review|           
+|negative_unique_word_count| Unique word count of negative review|                 
+|pos_sentiment_score| Sentiment Intensity score of positive review|                      
+|positive_unique_word_count| Word count of negative review|                   
+|pos_lem_sentiment_score| Sentiment Intensity score of lemmatized positive review|                                                     
+|negative_clean_review| Negative review, cleaned with NLP techniques|                       
+|negative_lemma| Lemmatized version of negative review|                            
+|positive_clean_review| Positive review, cleaned with NLP techniques|                       
+|positive_lemma| Lemmatized version of negative review|                           
 
 </details>
 
