@@ -56,7 +56,7 @@ ___
 <details><summary><i>Click to expand</i></summary>
 
 | Variable              | Meaning      |
-| <-> | <-- |
+| :-: | :-- |
 |Hotel_Address| Address of hotel.|
 |Review_Date| Date when reviewer posted the corresponding review.|
 |Average_Score| Average Score of the hotel, calculated based on the latest comment in the last year.|
