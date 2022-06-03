@@ -154,7 +154,10 @@ ___
 
 <details><summary><i>Click to expand</i></summary>
 
-    
+- Sentiment Intensity Analysis found that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
+
+- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. We found that the majority of positive reviews focus on (Topic 0) while the most negative topic mentioned in the reviews is (Topic -A). 
+
 
 **Next Steps:**
 
