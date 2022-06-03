@@ -3,7 +3,9 @@
 This repository contains all files, and ipython notebooks, used in this project. A full outline of all the files with descriptions can be found below.
 
 To view the Slide Deck, ["click here."](https://docs.google.com/presentation/d/14NduWHjm0qm983khKGOkC6xF5zmEDtpBVkPkxgIPVYc/edit?usp=sharing) 
+
 To view the Handout, ["click here."](https://www.canva.com/design/DAFCXzznwGM/qiVjEIAp4Bx0uVw9UfR_Tg/edit?utm_content=DAFCXzznwGM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) 
+
 To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb) 
 
 ___
