@@ -46,7 +46,7 @@ The goal of this project it to provide actionable recommendations to our partner
 
 ### Project Description
 
-    As the data science team at Booking.com we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewer’s score. With the reviewers’ scores, we calculated a Net Promoter Score-styled metric for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
+As the data science team at Booking.com we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewer’s score. With the reviewers’ scores, we calculated a Net Promoter Score-styled metric for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
 
 ### Initial Questions
 - What words/topics are associated with positive or negative reviews?
