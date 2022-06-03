@@ -6,7 +6,9 @@ To view the Slide Deck, ["click here."](https://docs.google.com/presentation/d/1
 
 To view the Handout, ["click here."](https://www.canva.com/design/DAFCXzznwGM/qiVjEIAp4Bx0uVw9UfR_Tg/edit?utm_content=DAFCXzznwGM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) 
 
-To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb) 
+To view the white paper, ["click here.](https://docs.google.com/document/d/1ph_axcpSNiGZAFXA7lmivC9EDDmzmvPa6Xr4bUssz6I/edit?usp=sharing)
+
+To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb)
 
 ___
 ## Table of Contents
