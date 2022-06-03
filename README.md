@@ -44,7 +44,7 @@ The goal of this project it to provide actionable recommendations to our partner
 
 ### Project Description
 
-    
+    As the data science team at Booking.com we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewer’s score. With the reviewers’ scores, we calculated a Net Promoter Score-styled metric for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
 
 ### Initial Questions
 
@@ -58,7 +58,7 @@ ___
 <details><summary><i>Click to expand</i></summary>
 
 | Variable              | Meaning      |
-| :-: | :-- |
+|:-:| :-- |
 |Hotel_Address| Address of hotel.|
 |Review_Date| Date when reviewer posted the corresponding review.|
 |Average_Score| Average Score of the hotel, calculated based on the latest comment in the last year.|
@@ -119,7 +119,7 @@ This project required extensive data cleaning and wrangling including:
 - parsing the list of strings in the tags column into seperate feature columns
 - changing the data type of the timestamp column and engineering additional features containing portions of the overall time stamp
 - verifying and updating review word counts
-- parsing the address values and creating seperate features for country, city, etc.
+- parsing the address values and creating separate features for country, city, etc.
 - dropping unneeded columns
 - preparing the text data from NLP including basic clean, removing stopwords, and lemmatizing
 - changing the order of the columns within the dataframe
@@ -131,7 +131,7 @@ This project required extensive data cleaning and wrangling including:
 
 <details><summary><i>Click to expand</i></summary>
 
-
+Exploration shifted from a regional focus at the outset of the project to an NLP focus, drawing on feature engineering to discover further insight into the data.
     
 </details>
 
@@ -139,6 +139,7 @@ This project required extensive data cleaning and wrangling including:
 
 <details><summary><i>Click to expand</i></summary>
 
+A Latent Dirichlet Allocation (LDA) model fed by our NLP efforts, was employed to determine the top words associated with a particular hotel. Predictive modeling is not a focus of this project.
     
 
 </details>
