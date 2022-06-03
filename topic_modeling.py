@@ -54,9 +54,7 @@ negative_df_document_topic = pd.DataFrame(np.round(negative_lda_output, 2), colu
 
 # Get dominant topic for each document
 positive_dominant_topic = np.argmax(positive_df_document_topic.values, axis=1)
-positive_df_document_topic['dominant_topic'] = positive_dominant_topic
 negative_dominant_topic = np.argmax(negative_df_document_topic.values, axis=1)
-negative_df_document_topic['dominant_topic'] = negative_dominant_topic
 
 # Create Dominant topic csv
 positive_dom_top = pd.DataFrame(positive_dominant_topic)
