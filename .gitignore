@@ -9,5 +9,6 @@ __pycache__/
 *.zip
 *.jpeg
 *.png
+*.gif
 functions.py
 kaggle.json
