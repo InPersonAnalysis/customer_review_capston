@@ -118,6 +118,7 @@ def wrangle_hotel(use_cache=True):
             city.append(' '.join(address.split()[-5:-4]))
             zip_code.append(' '.join(address.split()[-4:-2]))
             country.append(' '.join(address.split()[-2:]))
+    
     # Assign columns
     df['street'] = street
     df['city'] = city
