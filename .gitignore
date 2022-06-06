@@ -10,5 +10,6 @@ __pycache__/
 *.jpeg
 *.png
 *.gif
+*.json
 functions.py
 kaggle.json
