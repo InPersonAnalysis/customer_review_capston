@@ -2,50 +2,54 @@
 import pandas as pd
 import numpy as np
 import wrangle
-import pickle
 import os
 
 # Sklearn
-from sklearn.decomposition import LatentDirichletAllocation, TruncatedSVD
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.model_selection import GridSearchCV
+from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.feature_extraction.text import CountVectorizer
 
-def acquire_topics(df,use_cache = False):
+def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1, ngram_max = 1, n_topics = 5, use_cache = False):
     
+    # Assign csv name to variable
+    postopicfile = 'positive_dominant_topic.csv'
+    poswordfile = 'positive_topic_keywords.csv'
+    negtopicfile = 'negative_dominant_topic.csv'
+    negwordfile = 'negative_topic_keywords.csv'
     
-    topicfile = 'topic_file.csv'
-    wordfile = 'word_file.csv'
-    
-    # Check if file exists and if user wants a fresh copy from the database
-    if os.path.exists(topicfile) and os.path.exists(wordfile) and use_cache:
+    # Check if files exist and if user wants a fresh copy from the database
+    if (os.path.exists(postopicfile) and os.path.exists(poswordfile) and
+        os.path.exists(negtopicfile) and os.path.exists(negwordfile) and use_cache):
         print('Using cached csv file...')
         return pd.read_csv(topicfile), pd.read_csv(wordfile)
 
-    
-    
+    print('Getting a fresh copy')
     # Pull list of Postive and Negative values
-    positive_data = hotel.positive_lemma.tolist()
-    negative_data = hotel.negative_lemma.tolist()
+    positive_data = positive_review_series.tolist()
+    negative_data = negative_review_series.tolist()
 
     # Create Vectorizer models
-    postive_vectorizer = CountVectorizer(min_df=10,
+    positive_vectorizer = CountVectorizer(min_df=10,
                                  stop_words='english',
-                                 token_pattern='[a-zA-Z0-9]{3,}')
+                                 token_pattern='[a-zA-Z0-9]{3,}',
+                                 ngram_range = (ngram_min,ngram_max))
     negative_vectorizer = CountVectorizer(min_df=10,
                                  stop_words='english',
-                                 token_pattern='[a-zA-Z0-9]{3,}')
+                                 token_pattern='[a-zA-Z0-9]{3,}',
+                                 ngram_range = (ngram_min,ngram_max))
 
     # Fit and transform vectorizer
-    positive_data_vectorized = vectorizer.fit_transform(positive_data)
+    positive_data_vectorized = positive_vectorizer.fit_transform(positive_data)
     negative_data_vectorized = negative_vectorizer.fit_transform(negative_data)
 
     # Build LDA Model
-    positive_lda_model = LatentDirichletAllocation(learning_method='online',   
-                                          random_state=172,
-                                          n_jobs = -1)
-    negative_lda_model = LatentDirichletAllocation(learning_method='online',   
-                                          random_state=172,
-                                          n_jobs = -1)
+    positive_lda_model = LatentDirichletAllocation(n_components = n_topics, 
+                                                   learning_method='online',   
+                                                   random_state=172,
+                                                   n_jobs = -1)
+    negative_lda_model = LatentDirichletAllocation(n_components = n_topics,
+                                                   learning_method='online',   
+                                                   random_state=172,
+                                                   n_jobs = -1)
 
     # Fit and transform lda model
     positive_lda_output = positive_lda_model.fit_transform(positive_data_vectorized)
@@ -104,8 +108,8 @@ def acquire_topics(df,use_cache = False):
     negative_df_topic_keywords.columns = ['Word '+str(i) for i in range(negative_df_topic_keywords.shape[1])]
     negative_df_topic_keywords.index = ['Topic '+str(i) for i in range(negative_df_topic_keywords.shape[0])]
 
-
+    # Create topic keyword csv
     positive_df_topic_keywords.to_csv('positive_topic_keyword.csv')
     negative_df_topic_keywords.to_csv('negative_topic_keywords.csv')
     
-    return positive_word_df, positive_topic_df, negative_word_df, negative_topic_df
+    return positive_dom_top, positive_topic_keywords, negative_dom_top, negative_topic_keywords
