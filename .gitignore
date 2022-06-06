@@ -11,5 +11,6 @@ __pycache__/
 *.png
 *.gif
 *.json
+viz_files
 functions.py
 kaggle.json
