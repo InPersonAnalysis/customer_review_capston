@@ -56,12 +56,12 @@ def wrangle_hotel(use_cache=True):
     '''
 
     # Assign filename to csv for storage
-    filename = 'hotel.csv'
+    filename = 'hotel.json'
     
     # Check if file exists and if user wants a fresh copy from the database
     if os.path.exists(filename) and use_cache:
-        print('Using cached csv file...')
-        return pd.read_csv(filename)
+        print('Using cached file...')
+        return pd.read_json(filename)
 
     df = acquire_hotel_data()
     # lower case column names
@@ -142,9 +142,10 @@ def wrangle_hotel(use_cache=True):
                'positive_clean_review','positive_lemma']
     
     df = df[columns]
+    df = df.reset_index()
     
     # Create csv
-    df.to_csv(filename, index=False)
+    df.to_json(filename, date_format='iso')
     
     return df
 
