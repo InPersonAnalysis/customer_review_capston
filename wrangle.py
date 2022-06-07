@@ -126,11 +126,7 @@ def wrangle_hotel(use_cache=True):
     df['country'] = country
     df['nps_group'] = df.reviewer_score.apply(nps_group)
 
-    # Fill lat and long nulls with median coordinates according to city
-    med_lats = df.groupby('city').lat.agg(['median'])
-    med_longs = df.groupby('city').lng.agg(['median'])
-
-   # Drop Address
+    # Drop Address
     df = df.drop(columns=['hotel_address','tags'])
     
     # NLP Clean
