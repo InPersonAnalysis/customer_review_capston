@@ -119,7 +119,7 @@ The dataset, holding 515,738 customer reviews and scoring of 1493 luxury hotels 
 
 <details><summary><i>Click to expand</i></summary>
 
-This project required extensive data cleaning and wrangling including:
+This project required extensive data cleaning and wrangling, including:
 - changing the column names to all lower case
 - parsing the list of strings in the tags column into separate feature columns
 - changing the data type of the timestamp column and engineering additional features containing portions of the overall time stamp
