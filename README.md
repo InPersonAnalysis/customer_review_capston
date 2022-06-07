@@ -2,7 +2,7 @@
 
 This repository contains all files, and ipython notebooks, used in this project. A full outline of all the files with descriptions can be found below.
 
-To view the Slide Deck, ["click here."](https://docs.google.com/presentation/d/14NduWHjm0qm983khKGOkC6xF5zmEDtpBVkPkxgIPVYc/edit?usp=sharing) 
+To view the Slide Deck, ["click here."](https://www.canva.com/design/DAFC1pAZhjY/37-GQyhTmSVtm3tACkxOEw/edit?utm_content=DAFC1pAZhjY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) 
 
 To view the Handout, ["click here."](https://www.canva.com/design/DAFCXzznwGM/qiVjEIAp4Bx0uVw9UfR_Tg/edit?utm_content=DAFCXzznwGM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) 
 
@@ -32,7 +32,14 @@ ___
 ___
 ## Project Summary
 
-As the data science team at Bookings.com we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key word and key topic drivers of reviewer’s score. Using reviewer’s scores we calculated the current NPS influenced score for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
+Our analysis of hotel customer reviews found the following:
+  - Couples and leisure travelers were the groups who are generally most pleased with the hotels observed in this project. 
+  - The most valuable insights about customer satisfaction are found in the positive reviews. Sentiment analysis and topic model clustering show that indicators from negative reviews are significantly more muted.
+  - The areas of highest interest, as indicated by topic modeling, are:
+    - location
+    - staff
+    - room
+    - food
 
 
 ___
@@ -42,11 +49,11 @@ ___
 
 ### Project Goals
 
-The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their reviewer / NPS scores based on our findings from analyzing customer review data.
+The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their ratings based on our analysis of their customer review data.
 
 ### Project Description
 
-As the data science team at Booking.com we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewer’s score. With the reviewers’ scores, we calculated a Net Promoter Score-styled metric for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
+As the data science team at Booking.com, we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewers' scores. With the reviewers’ scores, we calculated a Net Promoter Score-styled metric for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
 
 ### Initial Questions
 - What words/topics are associated with positive or negative reviews?
@@ -111,7 +118,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset was collected from kaggle where said data was scraped from Booking.com. This dataset contains 515,000 customer reviews and scoring of 1493 luxury hotels across Europe with positive and negative reviews along with other columns that contain features for exploration. A data dictionary can be found above.
+The dataset, holding 515,738 customer reviews and scoring of 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
 
 </details>
 
@@ -119,16 +126,16 @@ The dataset was collected from kaggle where said data was scraped from Booking.c
 
 <details><summary><i>Click to expand</i></summary>
 
-This project required extensive data cleaning and wrangling including:
+This project required extensive data cleaning and wrangling, including:
 - changing the column names to all lower case
-- parsing the list of strings in the tags column into seperate feature columns
+- parsing the list of strings in the tags column into separate feature columns
 - changing the data type of the timestamp column and engineering additional features containing portions of the overall time stamp
 - verifying and updating review word counts
 - parsing the address values and creating separate features for country, city, etc.
 - dropping unneeded columns
 - preparing the text data from NLP including basic clean, removing stopwords, and lemmatizing
 - changing the order of the columns within the dataframe
-- cache the wrangled data as a csv to reduce processing time during exploration
+- cache the wrangled data as a json to reduce processing time during exploration
     
 </details>
 
@@ -136,7 +143,22 @@ This project required extensive data cleaning and wrangling including:
 
 <details><summary><i>Click to expand</i></summary>
 
-Exploration shifted from a regional focus at the outset of the project to an NLP focus, drawing on feature engineering to discover further insight into the data.
+- Who is the customer?
+- Reviewer scores
+- Net Promoter Score-style groups and metric
+- NLP
+  - Word frequency
+  - Sentiment analysis
+  - Topic modeling
+- Drivers of score by customer group
+  - Group type &#8594; 'Couple'
+  - Trip type &#8594; 'Leisure'
+  - Nights stayed $\leq$ 4
+- Breakdown by hotel
+  - Overview of aggregated hotel data
+  - General recommendations
+- Summary
+- Recommendations
     
 </details>
 
@@ -156,10 +178,20 @@ ___
 
 - Sentiment Intensity Analysis found that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
 
-- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. We found that the majority of positive reviews focus on (Topic 0) while the most negative topic mentioned in the reviews is (Topic -A). 
+  &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than those that can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. Given that these are luxury hotels ($$$), the flatness of sentiment scores on negative reviews could be attributed to a customer's tendency to want to reinforce their belief that they made a good purchase.
+
+- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. We found that the majority of positive reviews focus on (Topic 0) while the most negative topic mentioned in the reviews is (Topic -A).
+
+  &#8594;The "So What?": Topics identified by our LDA model can provide a hotelier with immediate insight on where to focus improvement efforts.
 
 
 **Next Steps:**
+- SHAP sentiment analysis
+
+- Different topic modeling algorithms:
+  - Truncated SVD/Latent Semantic Analysis
+  - Non-negative Matrix Factorization
+- Different topic model hyperparameters, vectorizers (TF/IDF)
 
     
 
