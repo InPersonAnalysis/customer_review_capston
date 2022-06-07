@@ -32,7 +32,14 @@ ___
 ___
 ## Project Summary
 
-As the data science team at Bookings.com we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key word and key topic drivers of reviewer’s score. Using reviewer’s scores we calculated the current NPS influenced score for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
+Our analysis of hotel customer reviews found the following:
+  - Couples and leisure travelers were the groups who are generally most pleased with the hotels observed in this project. 
+  - The most valuable insights about customer satisfaction are found in the positive reviews. Sentiment analysis and topic model clustering show that indicators from negative reviews are significantly more muted.
+  - The areas of highest interest, as indicated by topic modeling, are:
+    - location
+    - staff
+    - room
+    - food
 
 
 ___
