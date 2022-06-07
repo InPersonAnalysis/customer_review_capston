@@ -8,7 +8,7 @@ import os
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import CountVectorizer
 
-def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1, ngram_max = 1, n_topics = 5, learning_decay = 0.5 use_cache = False):
+def acquire_topics(positive_review_series, negative_review_series, ngram_min = 3, ngram_max = 3, n_topics = 5, learning_decay = 0.7, use_cache = True):
     
     # Assign csv name to variable
     postopicfile = 'positive_dominant_topic.csv'
@@ -20,7 +20,7 @@ def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1
     if (os.path.exists(postopicfile) and os.path.exists(poswordfile) and
         os.path.exists(negtopicfile) and os.path.exists(negwordfile) and use_cache):
         print('Using cached csv file...')
-        return pd.read_csv(topicfile), pd.read_csv(wordfile)
+        return pd.read_csv(postopicfile), pd.read_csv(poswordfile), pd.read_csv(negtopicfile), pd.read_csv(negwordfile)
 
     print('Getting a fresh copy')
     # Pull list of Postive and Negative values
@@ -48,7 +48,7 @@ def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1
                                                    random_state=172,
                                                    n_jobs = -1)
     negative_lda_model = LatentDirichletAllocation(n_components = n_topics,
-                                                   learning_decay = learning_decay
+                                                   learning_decay = learning_decay,
                                                    learning_method='online',   
                                                    random_state=172,
                                                    n_jobs = -1)
@@ -90,7 +90,7 @@ def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1
     negative_df_topic_keywords.index = negative_topicnames
 
     # Show top n keywords for each topic
-    def show_topics(vectorizer=vectorizer, lda_model=lda_model, n_words=20):
+    def show_topics(vectorizer, lda_model, n_words):
         keywords = np.array(vectorizer.get_feature_names())
         topic_keywords = []
         for topic_weights in lda_model.components_:
@@ -99,8 +99,8 @@ def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1
         return topic_keywords
 
     # Get top keywords for each topic
-    positive_topic_keywords = show_topics(vectorizer=positive_vectorizer, lda_model=positive_lda_model, n_words=15)
-    negative_topic_keywords = show_topics(vectorizer=negative_vectorizer, lda_model=negative_lda_model, n_words=15)     
+    positive_topic_keywords = show_topics(positive_vectorizer, positive_lda_model, 15)
+    negative_topic_keywords = show_topics(negative_vectorizer, negative_lda_model, 15)     
 
     # Topic - Keywords Dataframe
     positive_df_topic_keywords = pd.DataFrame(positive_topic_keywords)
@@ -111,7 +111,7 @@ def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1
     negative_df_topic_keywords.index = ['Topic '+str(i) for i in range(negative_df_topic_keywords.shape[0])]
 
     # Create topic keyword csv
-    positive_df_topic_keywords.to_csv('positive_topic_keyword.csv')
+    positive_df_topic_keywords.to_csv('positive_topic_keywords.csv')
     negative_df_topic_keywords.to_csv('negative_topic_keywords.csv')
     
     return positive_dom_top, positive_topic_keywords, negative_dom_top, negative_topic_keywords
