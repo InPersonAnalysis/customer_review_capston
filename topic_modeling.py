@@ -8,7 +8,7 @@ import os
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.feature_extraction.text import CountVectorizer
 
-def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1, ngram_max = 1, n_topics = 5, use_cache = False):
+def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1, ngram_max = 1, n_topics = 5, learning_decay = 0.5 use_cache = False):
     
     # Assign csv name to variable
     postopicfile = 'positive_dominant_topic.csv'
@@ -42,11 +42,13 @@ def acquire_topics(positive_review_series, negative_review_series, ngram_min = 1
     negative_data_vectorized = negative_vectorizer.fit_transform(negative_data)
 
     # Build LDA Model
-    positive_lda_model = LatentDirichletAllocation(n_components = n_topics, 
+    positive_lda_model = LatentDirichletAllocation(n_components = n_topics,
+                                                   learning_decay = learning_decay,
                                                    learning_method='online',   
                                                    random_state=172,
                                                    n_jobs = -1)
     negative_lda_model = LatentDirichletAllocation(n_components = n_topics,
+                                                   learning_decay = learning_decay
                                                    learning_method='online',   
                                                    random_state=172,
                                                    n_jobs = -1)
