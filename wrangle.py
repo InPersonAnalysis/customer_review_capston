@@ -130,29 +130,7 @@ def wrangle_hotel(use_cache=True):
     med_lats = df.groupby('city').lat.agg(['median'])
     med_longs = df.groupby('city').lng.agg(['median'])
 
-    # Fill null values in 'lat' column
-    amster_lats = df[(df.city == 'Amsterdam')].lat.fillna(med_lats.iloc[0][0])
-    barza_lats = df[(df.city == 'Barcelona')].lat.fillna(med_lats.iloc[1][0])
-    london_lats = df[(df.city == 'London')].lat.fillna(med_lats.iloc[2][0])
-    milan_lats = df[(df.city == 'Milan')].lat.fillna(med_lats.iloc[3][0])
-    paris_lats = df[(df.city == 'Paris')].lat.fillna(med_lats.iloc[4][0])
-    vienna_lats = df[(df.city == 'Vienna')].lat.fillna(med_lats.iloc[5][0])
-    
-    # Reassign 'lat' column with concatenated variables to fill nulls with median latitude by city
-    df.lat = pd.concat([amster_lats, barza_lats, london_lats, milan_lats, paris_lats, vienna_lats], axis=0, ignore_index=False)
-
-    # Fill null values in 'lng' column
-    amster_longs = df[(df.city == 'Amsterdam')].lng.fillna(med_longs.iloc[0][0])
-    barza_longs = df[(df.city == 'Barcelona')].lng.fillna(med_longs.iloc[1][0])
-    london_longs = df[(df.city == 'London')].lng.fillna(med_longs.iloc[2][0])
-    milan_longs = df[(df.city == 'Milan')].lng.fillna(med_longs.iloc[3][0])
-    paris_longs = df[(df.city == 'Paris')].lng.fillna(med_longs.iloc[4][0])
-    vienna_longs = df[(df.city == 'Vienna')].lng.fillna(med_longs.iloc[5][0])
-
-    # Reassign 'lng' column with concatenated variables to fill nulls with median longitude by city
-    df.lng = pd.concat([amster_longs, barza_longs, london_longs, milan_longs, paris_longs, vienna_longs], axis=0, ignore_index=False)
-
-    # Drop Address
+   # Drop Address
     df = df.drop(columns=['hotel_address','tags'])
     
     # NLP Clean
