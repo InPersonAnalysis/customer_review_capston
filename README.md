@@ -91,7 +91,7 @@ ___
 |trip_type| Type of trip ('leisure', 'business', 'unknown').|
 |nights_stayed| Number of nights stayed.|
 |group_type| Type of group ('couple', 'solo traveler', 'group', 'family with young children', 'family with older children', 'travelers with friends').|
-|nps_group| NPS-style grouping of customer based on review score(below 6: 'detractor', 6-9: 'passive', above 9: 'promoter').|
+|nps_group| NPS-style grouping of customer based on review score(below 7: 'detractor', 7-9: 'passive', above 9: 'promoter').|
 |neg_sentiment_score| Sentiment Intensity score of negative review.|
 |neg_lem_sentiment_score| Sentiment Intensity score of lemmatized negative review.|
 |review_total_negative_word_counts| Word count of negative review.|
@@ -118,7 +118,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset, holding 515,738 customer reviews and scoring of 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
+The dataset, holding 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
 
 </details>
 
