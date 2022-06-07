@@ -111,7 +111,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset, holding 515,738 customer reviews and scoring of 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. This dataset contains  A data dictionary can be found above.
+The dataset, holding 515,738 customer reviews and scoring of 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
 
 </details>
 
@@ -144,8 +144,8 @@ This project required extensive data cleaning and wrangling including:
   - Sentiment analysis
   - Topic modeling
 - Drivers of score by customer group
-  - Group type &#8594 'Couple'
-  - Trip type &#8594 'Leisure'
+  - Group type &#8594; 'Couple'
+  - Trip type &#8594; 'Leisure'
   - Nights stayed $\leq$ 4
 - Breakdown by hotel
   - Overview of aggregated hotel data
