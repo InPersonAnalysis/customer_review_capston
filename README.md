@@ -154,7 +154,7 @@ This project required extensive data cleaning and wrangling, including:
 - Drivers of score by customer group
   - Group type &#8594; 'Couple'
   - Trip type &#8594; 'Leisure'
-  - Nights stayed $\leq$ 4
+  - Nights stayed $\leq$ 3
 - Breakdown by hotel
   - Overview of aggregated hotel data
   - General recommendations
@@ -167,7 +167,7 @@ This project required extensive data cleaning and wrangling, including:
 
 <details><summary><i>Click to expand</i></summary>
 
-A Latent Dirichlet Allocation (LDA) model fed by our NLP efforts, was employed to determine the top words associated with a particular hotel. Predictive modeling is not a focus of this project.
+- For Topic Modeling we used sklearn's Latent Dirichlet Allocation (LDA) model. The LDA model takes each word in the document and assigns it to one of k topics. k is the number of topics set as a hyperparameter in the creation of the LDA model. The model then calculates the proportion of words in the document that are assigned to each topic or p(topic|document). It then calculates the proportion of documents assigned to each topic because of the words in the document or $p(word|topic)$. 
     
 
 </details>
