@@ -49,7 +49,7 @@ ___
 
 ### Project Goals
 
-The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their ratings based on our analysis of their customer review data.
+The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their performance ratings based on our analysis of their customer review data.
 
 ### Project Description
 
@@ -118,7 +118,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset, holding 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
+The dataset, containing 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
 
 </details>
 
@@ -144,8 +144,9 @@ This project required extensive data cleaning and wrangling, including:
 <details><summary><i>Click to expand</i></summary>
 
 - Who is the customer?
+  - The initial exploration of the dataset consisted of reviewing the distribution of customers across key groupings including trip type, group type and nights stayed as well as looking at reviewer score distributions and average hotel score distributions.
 - Reviewer scores
-- Net Promoter Score-style groups and metric
+- Net Promoter Score-style groups and and an accompanying metric
 - NLP
   - Word frequency
   - Sentiment analysis
