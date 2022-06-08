@@ -146,7 +146,7 @@ This project required extensive data cleaning and wrangling, including:
 - Who is the customer?
   - The initial exploration of the dataset consisted of reviewing the distribution of customers across key groupings including trip type, group type and nights stayed as well as looking at reviewer score distributions and average hotel score distributions.
 - Reviewer scores
-- Net Promoter Score-style groups and and an accompanying metric
+- Net Promoter Score-style groups and and an accompanying promoter score metric
 - NLP
   - Word frequency
   - Sentiment analysis
