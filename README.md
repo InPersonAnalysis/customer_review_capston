@@ -49,7 +49,7 @@ ___
 
 ### Project Goals
 
-The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their ratings based on our analysis of their customer review data.
+The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their performance ratings based on our analysis of their customer review data.
 
 ### Project Description
 
@@ -118,7 +118,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset, holding 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
+The dataset, containing 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
 
 </details>
 
@@ -144,8 +144,9 @@ This project required extensive data cleaning and wrangling, including:
 <details><summary><i>Click to expand</i></summary>
 
 - Who is the customer?
+  - The initial exploration of the dataset consisted of reviewing the distribution of customers across key groupings including trip type, group type and nights stayed as well as looking at reviewer score distributions and average hotel score distributions.
 - Reviewer scores
-- Net Promoter Score-style groups and metric
+- Net Promoter Score-style groups and and an accompanying promoter score metric
 - NLP
   - Word frequency
   - Sentiment analysis
@@ -153,7 +154,7 @@ This project required extensive data cleaning and wrangling, including:
 - Drivers of score by customer group
   - Group type &#8594; 'Couple'
   - Trip type &#8594; 'Leisure'
-  - Nights stayed $\leq$ 4
+  - Nights stayed $\leq$ 3
 - Breakdown by hotel
   - Overview of aggregated hotel data
   - General recommendations
@@ -166,7 +167,7 @@ This project required extensive data cleaning and wrangling, including:
 
 <details><summary><i>Click to expand</i></summary>
 
-A Latent Dirichlet Allocation (LDA) model fed by our NLP efforts, was employed to determine the top words associated with a particular hotel. Predictive modeling is not a focus of this project.
+- For Topic Modeling we used sklearn's Latent Dirichlet Allocation (LDA) model. The LDA model takes each word in the document and assigns it to one of k topics. k is the number of topics set as a hyperparameter in the creation of the LDA model. The model then calculates the proportion of words in the document that are assigned to each topic or p(topic|document). It then calculates the proportion of documents assigned to each topic because of the words in the document or $p(word|topic)$. 
     
 
 </details>
