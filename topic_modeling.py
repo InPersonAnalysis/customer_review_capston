@@ -89,19 +89,32 @@ def acquire_topics(positive_review_series, negative_review_series, ngram_min = 3
     negative_df_topic_keywords.columns = negative_vectorizer.get_feature_names()
     negative_df_topic_keywords.index = negative_topicnames
 
-    # Show top n keywords for each topic
-    def show_topics(vectorizer, lda_model, n_words):
-        keywords = np.array(vectorizer.get_feature_names())
-        topic_keywords = []
-        for topic_weights in lda_model.components_:
-            top_keyword_locs = (-topic_weights).argsort()[:n_words]
-            topic_keywords.append(keywords.take(top_keyword_locs))
-        return topic_keywords
-
+    # # Show top n keywords for each topic
+    # def show_topics(vectorizer, lda_model, n_words):
+    #     keywords = np.array(vectorizer.get_feature_names())
+    #     topic_keywords = []
+    #     for topic_weights in lda_model.components_:
+    #         top_keyword_locs = (-topic_weights).argsort()[:n_words]
+    #         topic_keywords.append(keywords.take(top_keyword_locs))
+    #     return topic_keywords
+    # positive_topic_keywords = show_topics(positive_vectorizer, positive_lda_model, 15)
+    # negative_topic_keywords = show_topics(negative_vectorizer, negative_lda_model, 15)
+    
     # Get top keywords for each topic
-    positive_topic_keywords = show_topics(positive_vectorizer, positive_lda_model, 15)
-    negative_topic_keywords = show_topics(negative_vectorizer, negative_lda_model, 15)     
+    keywords = np.array(positive_vectorizer.get_feature_names())
+    topic_keywords = []
+    for topic_weights in positive_lda_model.components_:
+        top_keyword_locs = (-topic_weights).argsort()[:15]
+        topic_keywords.append(keywords.take(top_keyword_locs))
+    positive_topic_keywords = topic_keywords
 
+    keywords = np.array(negative_vectorizer.get_feature_names())
+    topic_keywords = []
+    for topic_weights in negative_lda_model.components_:
+        top_keyword_locs = (-topic_weights).argsort()[:15]
+        topic_keywords.append(keywords.take(top_keyword_locs))
+    negative_topic_keywords = topic_keywords
+    
     # Topic - Keywords Dataframe
     positive_df_topic_keywords = pd.DataFrame(positive_topic_keywords)
     positive_df_topic_keywords.columns = ['Word '+str(i) for i in range(positive_df_topic_keywords.shape[1])]
