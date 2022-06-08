@@ -49,7 +49,7 @@ ___
 
 ### Project Goals
 
-The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their ratings based on our analysis of their customer review data.
+The goal of this project it to provide actionable recommendations to our partner hotels on how to increase their performance ratings based on our analysis of their customer review data.
 
 ### Project Description
 
@@ -91,7 +91,7 @@ ___
 |trip_type| Type of trip ('leisure', 'business', 'unknown').|
 |nights_stayed| Number of nights stayed.|
 |group_type| Type of group ('couple', 'solo traveler', 'group', 'family with young children', 'family with older children', 'travelers with friends').|
-|nps_group| NPS-style grouping of customer based on review score(below 6: 'detractor', 6-9: 'passive', above 9: 'promoter').|
+|nps_group| NPS-style grouping of customer based on review score(below 7: 'detractor', 7-9: 'passive', above 9: 'promoter').|
 |neg_sentiment_score| Sentiment Intensity score of negative review.|
 |neg_lem_sentiment_score| Sentiment Intensity score of lemmatized negative review.|
 |review_total_negative_word_counts| Word count of negative review.|
@@ -118,7 +118,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset, holding 515,738 customer reviews and scoring of 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
+The dataset, containing 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
 
 </details>
 
@@ -144,8 +144,9 @@ This project required extensive data cleaning and wrangling, including:
 <details><summary><i>Click to expand</i></summary>
 
 - Who is the customer?
+  - The initial exploration of the dataset consisted of reviewing the distribution of customers across key groupings including trip type, group type and nights stayed as well as looking at reviewer score distributions and average hotel score distributions.
 - Reviewer scores
-- Net Promoter Score-style groups and metric
+- Net Promoter Score-style groups and and an accompanying promoter score metric
 - NLP
   - Word frequency
   - Sentiment analysis
@@ -176,9 +177,9 @@ ___
 
 <details><summary><i>Click to expand</i></summary>
 
-- Sentiment Intensity Analysis found that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
+- Sentiment Intensity Analysis showed that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
 
-  &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than those that can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. Given that these are luxury hotels ($$$), the flatness of sentiment scores on negative reviews could be attributed to a customer's tendency to want to reinforce their belief that they made a good purchase.
+  &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than those that can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. 
 
 - Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. We found that the majority of positive reviews focus on (Topic 0) while the most negative topic mentioned in the reviews is (Topic -A).
 
