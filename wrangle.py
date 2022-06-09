@@ -135,8 +135,6 @@ def wrangle_hotel(use_cache=True):
     # Cast 'nights_stayed' dtype as 'int64'
     df.nights_stayed = df.nights_stayed.astype('int64')
 
-    # Fill nulls in coordinate columns ('lat' and 'lng')
-    df = fill_coord_nulls(df)
 
     # NLP Clean
     df = nlp_clean(df)
@@ -184,7 +182,7 @@ def fill_coord_nulls(df):
 
     # Reassign 'lng' column with concatenated variables to fill nulls with median longitude by city
     df.lng = pd.concat([amster_longs, barza_longs, london_longs, milan_longs, paris_longs, vienna_longs], axis=0, ignore_index=False)
-    
+    # Call this function outside of the main wrangle!
     return df
 
 # NLP PREPARATION
