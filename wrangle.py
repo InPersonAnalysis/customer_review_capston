@@ -133,14 +133,17 @@ def wrangle_hotel(use_cache=True):
     # NLP Clean
     df = nlp_clean(df)
     
+    # Topic Assignment
+    df['positive_topic'] = df.positive_lemma.apply(top_topic)
+    df['negative_topic'] = df.negative_lemma.apply(top_topic)
+    
     # Rearrange columns
-    columns = ['month_name','month','year','day_name','day','quarter', 'hotel_name','street','city','zip_code','country','lat',
-               'lng','additional_number_of_scoring','average_score','total_number_of_reviews','reviewer_nationality',
-               'trip_type','nights_stayed','group_type','total_number_of_reviews_reviewer_has_given','reviewer_score', 'nps_group',
-               'days_since_review','neg_sentiment_score','neg_lem_sentiment_score','review_total_negative_word_counts',
-               'negative_unique_word_count','pos_sentiment_score','review_total_positive_word_counts','positive_unique_word_count',
-               'pos_lem_sentiment_score', 'negative_review','negative_clean_review','negative_lemma','positive_review',
-               'positive_clean_review','positive_lemma']
+    columns = ['month_name','month','year','day_name','day','quarter','hotel_name','street','city','zip_code','country','lat','lng',
+             'additional_number_of_scoring','average_score','total_number_of_reviews','reviewer_nationality','trip_type','nights_stayed',
+             'group_type','total_number_of_reviews_reviewer_has_given','reviewer_score','nps_group','days_since_review','neg_sentiment_score',
+             'neg_lem_sentiment_score','review_total_negative_word_counts','negative_unique_word_count','negative_topic','pos_sentiment_score',
+             'review_total_positive_word_counts','positive_unique_word_count','pos_lem_sentiment_score','postive_topic','negative_review',
+             'negative_clean_review','negative_lemma','positive_review','positive_clean_review','positive_lemma']
     
     df = df[columns]
     df = df.reset_index()
@@ -332,4 +335,68 @@ def nps_group(reviewer_score):
         nps_group = 'no group'
     return nps_group
     
+def top_topic(review):
+    '''
+    This function takes in a review and checks for keywords assigned for each topic.
+    It assigns a number value to each topic and returns the topic with the highest count.
+    '''
+    # Make list of words for each topic
+    staff_words = ['staff','friendly','helpful','reception','maids','attentive','concierge','service','receptionist']
+    
+    location_words = ['location','located','view','area','metro','city','central','centre','center','train','access','walk',
+                      'public','transport','transportation','downtown','accessible','station','convenient','shop','distance']
+    
+    room_words = ['room','bed','matress','bathroom','spacious','shower','suite','pillow','bedroom','conditioning','bathtub','air',
+                  'window','conditioned','double','twin','size','single','noise','tv','bath','carpet','tile','noisy','small',
+                  'furniture','quiet','toilet']
+    
+    facilities_words = ['facilities','breakfast','security','buffet','restaurant','bar','coffee','tea','pool','wifi','facility',
+                        'parking','lobby','lounge','drink','hall','corridor','menu','storage','order','dining']
+    
+    value_words = ['value','money','cheap','cheapest','expensive','price','priced','cost']
+    
+    hotel_words = ['hotel']
+    
+    comfort_words = ['nothing','everything','atmosphere','good','comfortable','comfort','uncomfortable','pretty','clean','experience']
+
+    # Make a dictionary to check for topic words and a dictionary to keep topic counts per review
+    topic_dict = {'staff':staff_words,'location':location_words,'room':room_words,'facilities':facilities_words,
+                  'value':value_words,'hotel':hotel_words,'comfort':comfort_words}
+    
+    topic_count = {'staff' : 0, 'location' : 0, 'room' : 0, 'facilities' : 0, 'value' : 0, 'hotel': 0, 'comfort': 0}
+    
+    # Check the review for the topics
+    if review == '':
+        return 'blank'
+    
+    elif review.isnumeric():
+        return 'number'
+    
+    for word in review.split():
+        if word in topic_dict['staff']:
+            topic_count['staff'] += 1
+        
+        elif word in topic_dict['location']:
+            topic_count['location'] += 1
+        
+        elif word in topic_dict['room']:
+            topic_count['room'] += 1
+        
+        elif word in topic_dict['facilities']:
+            topic_count['facilities'] += 1
+        
+        elif word in topic_dict['value']:
+            topic_count['value'] += 1
+        
+        elif word in topic_dict['hotel']:
+            topic_count['hotel'] += 1
+        
+        elif word in topic_dict['comfort']:
+            topic_count['comfort'] += 1
+    
+    if all(value == 0 for value in topic_count.values()):
+        return 'no_topic'
+    
+    else:
+        return max(topic_count, key = topic_count.get)
 
