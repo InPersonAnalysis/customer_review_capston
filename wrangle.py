@@ -129,7 +129,13 @@ def wrangle_hotel(use_cache=True):
 
     # Drop Address
     df = df.drop(columns=['hotel_address','tags'])
-    
+
+    # Fill nulls in 'nights_stayed' column
+    df.nights_stayed = df.nights_stayed.fillna(1)
+
+    # Fill nulls in coordinate columns ('lat' and 'lng')
+    df = fill_coord_nulls(df)
+
     # NLP Clean
     df = nlp_clean(df)
     
