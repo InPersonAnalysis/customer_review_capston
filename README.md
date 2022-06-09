@@ -6,8 +6,6 @@ To view the Slide Deck, ["click here."](https://www.canva.com/design/DAFC1pAZhjY
 
 To view the Handout, ["click here."](https://www.canva.com/design/DAFCXzznwGM/qiVjEIAp4Bx0uVw9UfR_Tg/edit?utm_content=DAFCXzznwGM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) 
 
-To view the white paper, ["click here.](https://docs.google.com/document/d/1ph_axcpSNiGZAFXA7lmivC9EDDmzmvPa6Xr4bUssz6I/edit?usp=sharing)
-
 To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb)
 
 To view the Dashboard, ["click here."](https://public.tableau.com/app/profile/mathias.w.boissevain/viz/Hotel_Review_Capstone/HotelDashboard)
@@ -37,6 +35,7 @@ ___
 Our analysis of hotel customer reviews found the following:
   - Couples and leisure travelers were the groups who are generally most pleased with the hotels observed in this project. 
   - The most valuable insights about customer satisfaction are found in the positive reviews. Sentiment analysis and topic model clustering show that indicators from negative reviews are significantly more muted.
+  
   - The areas of highest interest, as indicated by topic modeling, are:
     - location
     - staff
@@ -169,7 +168,8 @@ This project required extensive data cleaning and wrangling, including:
 
 <details><summary><i>Click to expand</i></summary>
 
-- For Topic Modeling we used sklearn's Latent Dirichlet Allocation (LDA) model. The LDA model takes each word in the document and assigns it to one of k topics. k is the number of topics set as a hyperparameter in the creation of the LDA model. The model then calculates the proportion of words in the document that are assigned to each topic or p(topic|document). It then calculates the proportion of documents assigned to each topic because of the words in the document or $p(word|topic)$. 
+- For topic modeling, we started with sklearn's Latent Dirichlet Allocation (LDA) model. The LDA model takes each word in the document and assigns it to one of k topics. k is the number of topics set as a hyperparameter in the creation of the LDA model. The model then calculates the proportion of words in the document that are assigned to each topic or p(topic|document). It then calculates the proportion of documents assigned to each topic because of the words in the document or $p(word|topic)$. 
+- The findings of the model were not conclusive enough to issue recommendations by themselves, so we added our own analysis of word frequency and context to the keyword groupings extracted by the model to generate a list of topics for each type of review.
     
 
 </details>
@@ -179,16 +179,15 @@ ___
 
 <details><summary><i>Click to expand</i></summary>
 
--
-
 - Sentiment Intensity Analysis showed that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
 
   &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than those that can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. 
 
-- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. We found that the majority of positive reviews focus on (Topic 0) while the most negative topic mentioned in the reviews is (Topic -A).
+- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. 
 
-  &#8594;The "So What?": Topics identified by our LDA model can provide a hotelier with immediate insight on where to focus improvement efforts.
+  &#8594;The "So What?": Topics identified by our LDA model, along with our analysis of word frequency and context, combine to provide a hotelier with immediate insight on where to focus improvement efforts.
 
+- 
 
 **Next Steps:**
 - SHAP sentiment analysis
