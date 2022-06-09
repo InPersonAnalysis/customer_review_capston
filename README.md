@@ -10,6 +10,8 @@ To view the white paper, ["click here.](https://docs.google.com/document/d/1ph_a
 
 To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb)
 
+To view the Dashboard, ["click here."](https://public.tableau.com/app/profile/mathias.w.boissevain/viz/Hotel_Review_Capstone/HotelDashboard)
+
 ___
 ## Table of Contents
 
