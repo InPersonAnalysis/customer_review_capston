@@ -2,7 +2,7 @@ env.py
 imports.py
 prep.py
 *.csv
-.ipynb_checkpoint/
+.ipynb_checkpoints/
 .DS_Store
 __pycache__/
 *.xlsx
