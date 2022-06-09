@@ -177,6 +177,8 @@ ___
 
 <details><summary><i>Click to expand</i></summary>
 
+-
+
 - Sentiment Intensity Analysis showed that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
 
   &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than those that can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. 
