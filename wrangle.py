@@ -129,13 +129,7 @@ def wrangle_hotel(use_cache=True):
 
     # Drop Address
     df = df.drop(columns=['hotel_address','tags'])
-
-    # Fill nulls in 'nights_stayed' column
-    df.nights_stayed = df.nights_stayed.fillna(1)
-    # Cast 'nights_stayed' dtype as 'int64'
-    df.nights_stayed = df.nights_stayed.astype('int64')
-
-
+    
     # NLP Clean
     df = nlp_clean(df)
     
@@ -145,11 +139,11 @@ def wrangle_hotel(use_cache=True):
     
     # Rearrange columns
     columns = ['month_name','month','year','day_name','day','quarter','hotel_name','street','city','zip_code','country','lat','lng',
-             'additional_number_of_scoring','average_score','total_number_of_reviews','reviewer_nationality','trip_type','nights_stayed',
-             'group_type','total_number_of_reviews_reviewer_has_given','reviewer_score','nps_group','days_since_review','neg_sentiment_score',
-             'neg_lem_sentiment_score','review_total_negative_word_counts','negative_unique_word_count','negative_topic','pos_sentiment_score',
-             'review_total_positive_word_counts','positive_unique_word_count','pos_lem_sentiment_score','postive_topic','negative_review',
-             'negative_clean_review','negative_lemma','positive_review','positive_clean_review','positive_lemma']
+        'additional_number_of_scoring','average_score','total_number_of_reviews','reviewer_nationality','trip_type','nights_stayed',
+        'group_type','total_number_of_reviews_reviewer_has_given','reviewer_score','nps_group','days_since_review','neg_sentiment_score',
+        'neg_lem_sentiment_score','review_total_negative_word_counts','negative_unique_word_count','negative_topic','pos_sentiment_score',
+        'review_total_positive_word_counts','positive_unique_word_count','pos_lem_sentiment_score','positive_topic','negative_review',
+        'negative_clean_review','negative_lemma','positive_review','positive_clean_review','positive_lemma']
     
     df = df[columns]
     df = df.reset_index()
@@ -185,7 +179,7 @@ def fill_coord_nulls(df):
 
     # Reassign 'lng' column with concatenated variables to fill nulls with median longitude by city
     df.lng = pd.concat([amster_longs, barza_longs, london_longs, milan_longs, paris_longs, vienna_longs], axis=0, ignore_index=False)
-    # Call this function outside of the main wrangle!
+    
     return df
 
 # NLP PREPARATION
