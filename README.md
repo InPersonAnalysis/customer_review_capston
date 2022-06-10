@@ -13,8 +13,6 @@ To view the Dashboard, ["click here."](https://public.tableau.com/app/profile/ma
 ___
 ## Table of Contents
 
-<details><summary><i>Click to expand</i></summary>
-
 - [Customer Review Analysis](#customer-review-analysis)
   - [Table of Contents](#table-of-contents)
   - [Project Summary](#project-summary)
@@ -31,14 +29,9 @@ ___
   - [Lessons Learned](#lessons-learned)
   - [Instructions For Recreating This Project](#instructions-for-recreating-this-project)
 
-    
-</details>
-
 ___
 ## Project Summary
 
-<details><summary><i>Click to expand</i></summary>
-    
 Our analysis of hotel customer reviews found the following:
   - Couples and leisure travelers were the groups who are generally most pleased with the hotels observed in this project. 
   - The most valuable insights about customer satisfaction are found in the positive reviews. Sentiment analysis and topic model clustering show that indicators from negative reviews are significantly more muted.
@@ -49,7 +42,7 @@ Our analysis of hotel customer reviews found the following:
     - room
     - food
 
-</details>
+- We coalesced the results of analysis into an interactive dashboard that provides individualized statistics for each hotel in the dataset.
 
 ___
 ## Project Planning
@@ -62,7 +55,7 @@ The goal of this project it to provide actionable recommendations to our partner
 
 ### Project Description
 
-As the data science team at Booking.com, we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewers' scores. With the reviewers’ scores, we calculated a Net Promoter Score-styled metric for each hotel helping them understand their customer’s opinions so they can implement improvements based on the insight from our review analysis. 
+As the data science team at Booking.com, we analyzed the extensive customer review dataset for our partner hotels in the European region. Using natural language processing, sentiment analysis, and topic modeling we were able to identify key groups within the body of customers and key topic drivers of reviewers' scores. From the reviewers’ scores, we calculated a Net Promoter Score-styled metric to gauge customer satisfaction more accurately. The end product of these various analyses is an interactive dashboard that presents each hotel with a summary of its customer service performance.
 
 ### Initial Questions
 - What words/topics are associated with positive or negative reviews?
@@ -127,7 +120,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset, containing 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. A data dictionary can be found above.
+The dataset, containing 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. See the data dictionary above.
 
 </details>
 
@@ -191,11 +184,13 @@ ___
 
   &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than those that can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. 
 
-- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. 
+- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. However, the model's output was not enough to develop actionable recommendations on its own. It was necessary to apply an analysis of word frequency and context on top of the model's groupings of keywords to produce a topic model that could point to specific opportunities for improvement or areas of excellence in providing hotel customers the best experience 
 
-  &#8594;The "So What?": Topics identified by our LDA model, along with our analysis of word frequency and context, combine to provide a hotelier with immediate insight on where to focus improvement efforts.
+  &#8594;The "So What?": Topics identified by our model, which combined the output of the unsupervised LDA algorithm with our human analysis of word frequency and context, combine to provide a hotelier with immediate insight on where to focus improvement efforts.
 
-- 
+- Analysis of reviewers' scores was aided by the assignment of NPS-style customer groups and a pursuant calculation of a performance metric that effectively reduced the inherent inflation of scoring, thus providing a more accurate gauge of customer satisfaction.
+
+  &#8594;The "So What?": Better conclusions about customer satisfaction can be drawn from the NPS-style metric, and the groups allow for further aggregation and analysis.
 
 **Next Steps:**
 - SHAP sentiment analysis
