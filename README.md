@@ -31,6 +31,8 @@ ___
   - [Lessons Learned](#lessons-learned)
   - [Instructions For Recreating This Project](#instructions-for-recreating-this-project)
 
+    
+</details>
 ___
 ## Project Summary
 
@@ -46,7 +48,7 @@ Our analysis of hotel customer reviews found the following:
     - room
     - food
 
-
+</details>
 ___
 ## Project Planning
 
