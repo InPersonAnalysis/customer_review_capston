@@ -33,6 +33,7 @@ ___
 
     
 </details>
+
 ___
 ## Project Summary
 
@@ -49,6 +50,7 @@ Our analysis of hotel customer reviews found the following:
     - food
 
 </details>
+
 ___
 ## Project Planning
 
