@@ -6,14 +6,14 @@ To view the Slide Deck, ["click here."](https://www.canva.com/design/DAFC1pAZhjY
 
 To view the Handout, ["click here."](https://www.canva.com/design/DAFCXzznwGM/qiVjEIAp4Bx0uVw9UfR_Tg/edit?utm_content=DAFCXzznwGM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) 
 
-To view the white paper, ["click here.](https://docs.google.com/document/d/1ph_axcpSNiGZAFXA7lmivC9EDDmzmvPa6Xr4bUssz6I/edit?usp=sharing)
-
 To view the Final Report, ["click here."](https://github.com/InPersonAnalysis/customer_review_capstone/blob/main/final_notebook.ipynb)
 
 To view the Dashboard, ["click here."](https://public.tableau.com/app/profile/mathias.w.boissevain/viz/Hotel_Review_Capstone/HotelDashboard)
 
 ___
 ## Table of Contents
+
+<details><summary><i>Click to expand</i></summary>
 
 - [Customer Review Analysis](#customer-review-analysis)
   - [Table of Contents](#table-of-contents)
@@ -34,6 +34,8 @@ ___
 ___
 ## Project Summary
 
+<details><summary><i>Click to expand</i></summary>
+    
 Our analysis of hotel customer reviews found the following:
   - Couples and leisure travelers were the groups who are generally most pleased with the hotels observed in this project. 
   - The most valuable insights about customer satisfaction are found in the positive reviews. Sentiment analysis and topic model clustering show that indicators from negative reviews are significantly more muted.
