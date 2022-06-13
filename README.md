@@ -184,9 +184,7 @@ ___
 
 <details><summary><i>Click to expand</i></summary>
 
-- The sum of our various analyses of this dataset is collected within an interactive dashboard. The dashboard houses the metrics and statistics individually most relevant to the customer service performance of each of the nearly 1,500 hotels served by Booking.com are presented for each hotelier's review.
-
-["click here."](https://public.tableau.com/app/profile/mathias.w.boissevain/viz/Hotel_Review_Capstone/HotelDashboard)
+- The sum of our various analyses of this dataset is collected within an interactive dashboard. The dashboard houses the metrics and statistics individually most relevant to the customer service performance of each of the nearly 1,500 hotels served by Booking.com are presented for each hotelier's review. ["Click here."](https://public.tableau.com/app/profile/mathias.w.boissevain/viz/Hotel_Review_Capstone/HotelDashboard)
 
 </details>
 
