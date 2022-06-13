@@ -26,6 +26,7 @@ ___
     - [Data Preparation](#data-preparation)
     - [Exploratory Analysis](#exploratory-analysis)
     - [Modeling](#modeling)
+    - [Deliverables](#deliverables)
   - [Lessons Learned](#lessons-learned)
   - [Instructions For Recreating This Project](#instructions-for-recreating-this-project)
 
