@@ -43,7 +43,7 @@ Our analysis of hotel customer reviews found the following:
     - room
     - food
 
-- We coalesced the results of analysis into an interactive dashboard that provides individualized statistics for each hotel in the dataset.
+- We coalesced the results of our analysis into an interactive dashboard that provides individualized metrics for each hotel in the dataset.
 
 ___
 ## Project Planning
@@ -174,7 +174,7 @@ This project required extensive data cleaning and wrangling, including:
 
 <details><summary><i>Click to expand</i></summary>
 
-- For topic modeling, we started with sklearn's Latent Dirichlet Allocation (LDA) model. The LDA model takes each word in the document and assigns it to one of k topics. k is the number of topics set as a hyperparameter in the creation of the LDA model. The model then calculates the proportion of words in the document that are assigned to each topic or p(topic|document). It then calculates the proportion of documents assigned to each topic because of the words in the document or $p(word|topic)$. 
+- For topic modeling, we started with sklearn's Latent Dirichlet Allocation (LDA) model. The LDA model takes each word in the document and assigns it to one of k topics. k is the number of topics set as a hyperparameter in the creation of the LDA model. The model then calculates the proportion of words in the document that are assigned to each topic or $p(topic|document)$. It then calculates the proportion of documents assigned to each topic because of the words in the document or $p(word|topic)$. 
 - The findings of the model were not conclusive enough to issue recommendations by themselves, so we added our own analysis of word frequency and context to the keyword groupings extracted by the model to generate a list of topics for each type of review.
     
 
@@ -198,7 +198,7 @@ ___
 
   &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. 
 
-- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. However, the model's output was not enough to develop actionable recommendations on its own. It was necessary to apply an analysis of word frequency and context on top of the model's groupings of keywords to produce a topic model that could point to specific opportunities for improvement or areas of excellence in providing hotel customers the best experience 
+- Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. However, the model's output was not enough to develop actionable recommendations on its own. It was necessary to apply an analysis of word frequency and context on top of the model's groupings of keywords to produce a topic model that could point to specific opportunities for improvement or areas of excellence in providing hotel customers the best experience. 
 
   &#8594;The "So What?": Topics identified by our model, which combined the output of the unsupervised LDA algorithm with our human analysis of word frequency and context, come together to provide a hotelier with immediate insight on where to focus improvement efforts.
 
