@@ -99,13 +99,11 @@ ___
 |neg_lem_sentiment_score| Sentiment Intensity score of lemmatized negative review.|
 |review_total_negative_word_counts| Word count of negative review.|
 |negative_unique_word_count| Unique word count of negative review.|
-|negative_topic|Topic model designators('room', 'blank', 'facilities', 'no_topic', 'staff', 'location',
-       'comfort', 'hotel', 'value', 'number') for negative reviews.|
+|negative_topic|Topic model designators for negative reviews.|
 |pos_sentiment_score| Sentiment Intensity score of positive review.|
 |positive_unique_word_count| Word count of negative review.|
 |pos_lem_sentiment_score| Sentiment Intensity score of lemmatized positive review.|
-|positive_topic|Topic model designators('staff', 'location', 'room', 'blank', 'comfort', 'facilities',
-       'no_topic', 'hotel', 'value', 'number') for positive reviews.|
+|positive_topic|Topic model designators for positive reviews.|
 |negative_clean_review| Negative review, cleaned with NLP techniques.|
 |negative_lemma| Lemmatized version of negative review.|
 |positive_clean_review| Positive review, cleaned with NLP techniques.|
