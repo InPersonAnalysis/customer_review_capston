@@ -26,6 +26,7 @@ ___
     - [Data Preparation](#data-preparation)
     - [Exploratory Analysis](#exploratory-analysis)
     - [Modeling](#modeling)
+    - [Deliverables](#deliverables)
   - [Lessons Learned](#lessons-learned)
   - [Instructions For Recreating This Project](#instructions-for-recreating-this-project)
 
@@ -98,13 +99,17 @@ ___
 |neg_lem_sentiment_score| Sentiment Intensity score of lemmatized negative review.|
 |review_total_negative_word_counts| Word count of negative review.|
 |negative_unique_word_count| Unique word count of negative review.|
+|negative_topic|Topic model designators('room', 'blank', 'facilities', 'no_topic', 'staff', 'location',
+       'comfort', 'hotel', 'value', 'number') for negative reviews.|
 |pos_sentiment_score| Sentiment Intensity score of positive review.|
 |positive_unique_word_count| Word count of negative review.|
 |pos_lem_sentiment_score| Sentiment Intensity score of lemmatized positive review.|
+|positive_topic|Topic model designators('staff', 'location', 'room', 'blank', 'comfort', 'facilities',
+       'no_topic', 'hotel', 'value', 'number') for positive reviews.|
 |negative_clean_review| Negative review, cleaned with NLP techniques.|
 |negative_lemma| Lemmatized version of negative review.|
 |positive_clean_review| Positive review, cleaned with NLP techniques.|
-|positive_lemma| Lemmatized version of negative review.|
+|positive_lemma| Lemmatized version of positive review.|
 
 </details>
 
@@ -120,7 +125,7 @@ Plan &#8594; Acquire &#8594; Prepare &#8594; Explore &#8594; Model &#8594; Deliv
 
 <details><summary><i>Click to expand</i></summary>
 
-The dataset, containing 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. See the data dictionary above.
+The data was collected by utilizing kaggles API to acess and pull the data from kaggle. The dataset, containing 515,738 customer reviews and scores for 1493 luxury hotels across Europe, was found on kaggle (originally scraped from Booking.com). All data in the file is publicly available. See the data dictionary above.
 
 </details>
 
@@ -176,17 +181,26 @@ This project required extensive data cleaning and wrangling, including:
 </details>
 ___
 
+### Deliverables
+
+<details><summary><i>Click to expand</i></summary>
+
+- The sum of our various analyses of this dataset is collected within an interactive dashboard. The dashboard houses the metrics and statistics individually most relevant to the customer service performance of each of the nearly 1,500 hotels served by Booking.com are presented for each hotelier to review at their leisure. ["Click here."](https://public.tableau.com/app/profile/mathias.w.boissevain/viz/Hotel_Review_Capstone/HotelDashboard)
+
+</details>
+
+
 ## Lessons Learned
 
 <details><summary><i>Click to expand</i></summary>
 
 - Sentiment Intensity Analysis showed that guests who were on leisure trips had the most positive sentiment, and that solo travelers and families with young children tended to have lower positive sentiment than other groups. Sentiment intensity in negative reviews was mostly neutral, while in positive reviews, sentiment intensity was much more identifiably positive.
 
-  &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than those that can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. 
+  &#8594;The "So What?": On a high level, better conclusions regarding areas in which a given hotel is doing well can be drawn from the positive reviews than can be drawn on areas in which that same hotel is underperforming as reported in the negative reviews. 
 
 - Our LDA model identified dominant topics associated with the reviews for each hotel. Mapping of topic cluster segregations for positive and negative reviews also mirrored patterns found in sentiment analysis: negative reviews did not produce discernible clusters while positive reviews produced clearly stratified clusters. However, the model's output was not enough to develop actionable recommendations on its own. It was necessary to apply an analysis of word frequency and context on top of the model's groupings of keywords to produce a topic model that could point to specific opportunities for improvement or areas of excellence in providing hotel customers the best experience 
 
-  &#8594;The "So What?": Topics identified by our model, which combined the output of the unsupervised LDA algorithm with our human analysis of word frequency and context, combine to provide a hotelier with immediate insight on where to focus improvement efforts.
+  &#8594;The "So What?": Topics identified by our model, which combined the output of the unsupervised LDA algorithm with our human analysis of word frequency and context, come together to provide a hotelier with immediate insight on where to focus improvement efforts.
 
 - Analysis of reviewers' scores was aided by the assignment of NPS-style customer groups and a pursuant calculation of a performance metric that effectively reduced the inherent inflation of scoring, thus providing a more accurate gauge of customer satisfaction.
 
