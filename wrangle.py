@@ -89,9 +89,13 @@ def wrangle_hotel(use_cache=True):
     df['negative_unique_word_count'] = [len(set(nr.split())) for nr in df.negative_review]
     df['positive_unique_word_count'] = [len(set(pr.split())) for pr in df.positive_review]
     
-    # remove day string and make int type
+    # Remove day string and make int type
     df.days_since_review = [row.split()[0] for row in df.days_since_review]
     df.days_since_review = df.days_since_review.astype('int')
+
+    # Fill nulls in nights_stayed and cast as integer type 
+    df.nights_stayed = df.nights_stayed.fillna(1) 
+    df.nights_stayed = df.nights_stayed.astype('int64')
     
     # Get Hotel Location
     # Create blank lists
